@@ -91,7 +91,7 @@ header p {
     font-weight: 700;
 }
 
-/* Estilos para cada ramo - Celeste pastel y el nuevo Morado para aprobado */
+/* Estilos para cada ramo - Celeste pastel y el nuevo Lavanda para aprobado */
 .ramo {
     background-color: #add8e6; /* Celeste pastel para no aprobado */
     border: 1px solid #94b2bf;
@@ -119,10 +119,10 @@ header p {
     box-shadow: 0 3px 8px rgba(0, 0, 0, 0.05);
 }
 
-/* Estado: Aprobado - NUEVO COLOR: #983ae0 */
+/* Estado: Aprobado - Color: Lavanda (#B8A2D8) */
 .ramo.aprobado {
-    background-color: #983ae0; /* ¡Aquí el nuevo color morado! */
-    border: 1px solid #7a2eb4; /* Borde un poco más oscuro que el fondo */
+    background-color: #B8A2D8; /* ¡Nuevo color Lavanda! */
+    border: 1px solid #9D8BBF; /* Un lavanda ligeramente más oscuro para el borde */
     color: white; /* Color de texto blanco para mejor contraste */
     text-decoration: none;
     cursor: default;
