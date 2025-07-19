@@ -1,0 +1,124 @@
+body {
+  font-family: sans-serif;
+  background: #f7f6fb;
+  padding: 20px;
+  color: #333;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.grid-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.semestre {
+  border: 2px solid #ccc;
+  border-radius: 10px;
+  padding: 10px;
+  width: 250px;
+  background: #ffffff;
+  box-shadow: 0 0 5px rgba(0,0,0,0.1);
+}
+
+.semestre h2 {
+  text-align: center;
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.ramo {
+  background: #d7b3f6;
+  padding: 8px;
+  border-radius: 6px;
+  margin: 5px 0;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.ramo:hover {
+  background: #c694f5;
+}
+
+.ramo.aprobado {
+  background: #8a4dff;
+  color: white;
+  text-decoration: line-through;
+}
+
+.ramo.aprobado::after {
+  content: attr(data-nota);
+  position: absolute;
+  right: 8px;
+  top: 8px;
+  background: #fff;
+  color: #8a4dff;
+  font-size: 0.75rem;
+  padding: 2px 5px;
+  border-radius: 4px;
+  font-weight: bold;
+}
+
+.ramo.bloqueado {
+  background: #ccc;
+  color: #666;
+  cursor: not-allowed;
+}
+
+.ramo.bloqueado::before {
+  content: "🔒 ";
+}
+
+.modal {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0,0,0,0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal.hidden {
+  display: none;
+}
+
+.modal-content {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  width: 300px;
+  text-align: center;
+}
+
+#nota {
+  width: 80%;
+  padding: 5px;
+  margin-top: 10px;
+}
+
+button {
+  margin-top: 10px;
+  padding: 8px 16px;
+  background: #8a4dff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#close {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 20px;
+  cursor: pointer;
+}
