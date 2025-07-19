@@ -1,39 +1,25 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Malla Medicina Veterinaria UST</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Malla Medicina Veterinaria UST - Tu Nombre</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
-  <h1>Malla Medicina Veterinaria UST</h1>
-  <div id="malla" class="grid-container">
-    <!-- Ejemplo de semestre y ramos -->
-    <div class="semestre">
-      <h2>Semestre 1</h2>
-      <div class="ramo" data-id="VET-069" data-nombre="Zoología">Zoología</div>
-      <div class="ramo" data-id="VET-171" data-nombre="Intro. Medicina Veterinaria">Intro. Medicina Veterinaria</div>
-      <div class="ramo" data-id="MAT-016" data-nombre="Razonamiento Lógico Matemático">Razonamiento Lógico Matemático</div>
-      <div class="ramo" data-id="BIO-002" data-nombre="Biología Celular">Biología Celular</div>
-      <div class="ramo" data-id="FGL-149" data-nombre="Taller de Competencias Comunicativas">Taller Comunicativo</div>
-      <div class="ramo" data-id="FGL-151" data-nombre="Taller de Desarrollo Personal I">Desarrollo Personal I</div>
-    </div>
+    <header>
+        <h1>Malla Medicina Veterinaria UST</h1>
+        <p>Haz clic en los ramos para marcarlos como aprobados y ver tus notas.</p>
+    </header>
 
-    <!-- Más semestres se agregan de igual forma -->
-  </div>
+    <main id="malla-container" class="grid-container">
+        </main>
 
-  <!-- Modal para ingresar nota -->
-  <div id="modal" class="modal hidden">
-    <div class="modal-content">
-      <span id="close">&times;</span>
-      <h3>Marcar como aprobado</h3>
-      <p id="ramo-nombre"></p>
-      <input type="text" id="nota" placeholder="Ingresa nota (ej: 6.0)" />
-      <button id="guardar">Guardar</button>
-    </div>
-  </div>
+    <footer>
+        <p>&copy; 2025 Tu Nombre</p>
+    </footer>
 
-  <script src="script.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
