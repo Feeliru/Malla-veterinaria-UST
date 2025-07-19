@@ -18,7 +18,7 @@ header {
 }
 
 header h1 {
-    font-family: 'Playfair Display', serif; /* Se mantiene explícito, aunque ya lo hereda del body */
+    font-family: 'Playfair Display', serif;
     color: #4a4a4a;
     font-size: 2.5em;
     margin-bottom: 10px;
@@ -30,33 +30,54 @@ header p {
     color: #666;
 }
 
-/* Contenedor principal de la malla - Diseño Horizontal */
-#malla-container.horizontal-scroll {
-    display: flex;
-    flex-direction: row;
-    overflow-x: auto;
-    gap: 15px;
-    padding-bottom: 20px;
-    max-width: none;
-    margin: 0 auto;
+/* Contenedor principal de la malla - DISPOSICIÓN HORIZONTAL CLAVE */
+#malla-container {
+    display: flex; /* Habilitamos Flexbox */
+    flex-direction: row; /* Los elementos hijos (semestres) se alinean en fila */
+    overflow-x: auto; /* Permite el scroll horizontal si los semestres exceden el ancho de la pantalla */
+    gap: 15px; /* Espacio entre los semestres */
+    padding: 20px 0; /* Un poco de padding arriba/abajo, y nada a los lados */
+    justify-content: flex-start; /* Alinea los semestres al inicio del contenedor */
+    align-items: flex-start; /* Alinea los semestres a la parte superior */
+    /* Añadimos un scrollbar más estilizado para navegadores webkit (Chrome, Safari) */
+    scrollbar-width: thin; /* "auto" o "none" */
+    scrollbar-color: #8a2be2 #f0f2f5; /* color del pulgar y del riel */
 }
 
-/* Estilos para cada semestre - Diseño Horizontal */
+/* Estilo para el scrollbar en navegadores Webkit (Chrome, Safari, Edge) */
+#malla-container::-webkit-scrollbar {
+    height: 8px; /* Altura de la barra de desplazamiento horizontal */
+}
+
+#malla-container::-webkit-scrollbar-track {
+    background: #f0f2f5; /* Color del fondo de la barra de desplazamiento */
+    border-radius: 10px;
+}
+
+#malla-container::-webkit-scrollbar-thumb {
+    background-color: #8a2be2; /* Color del "pulgar" (el que se arrastra) */
+    border-radius: 10px;
+    border: 2px solid #f0f2f5; /* Espacio alrededor del pulgar */
+}
+
+
+/* Estilos para cada semestre - Componente individual en la fila */
 .semestre {
     background-color: #fff;
     border-radius: 8px;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
     padding: 15px;
-    flex: none;
-    width: 220px;
-    min-width: 220px;
-    max-width: 220px;
+    flex: none; /* Asegura que no crezca ni encoja con el espacio disponible */
+    width: 220px; /* Ancho fijo para cada columna de semestre */
+    min-width: 220px; /* Asegura que no se haga más pequeño */
+    max-width: 220px; /* Asegura que no se haga más grande */
     display: flex;
-    flex-direction: column;
+    flex-direction: column; /* Los ramos dentro del semestre siguen siendo verticales */
+    height: auto; /* Permitir que la altura se ajuste al contenido */
 }
 
 .semestre h2 {
-    font-family: 'Playfair Display', serif; /* Se mantiene explícito, aunque ya lo hereda del body */
+    font-family: 'Playfair Display', serif;
     color: #555;
     margin-top: 0;
     margin-bottom: 10px;
@@ -67,10 +88,10 @@ header p {
     font-weight: 700;
 }
 
-/* Estilos para cada ramo - Más pequeño y color morado claro */
+/* Estilos para cada ramo - Más pequeño y color celeste pastel */
 .ramo {
-    background-color: #c9a4ea; /* Morado claro */
-    border: 1px solid #b384d4;
+    background-color: #add8e6; /* Celeste pastel */
+    border: 1px solid #94b2bf; /* Borde ligeramente más oscuro */
     padding: 10px;
     margin-bottom: 8px;
     border-radius: 5px;
@@ -82,7 +103,7 @@ header p {
     flex-direction: column;
     justify-content: center;
     min-height: 50px;
-    font-size: 0.9em; /* Considera ajustar si se ve muy pequeño con Playfair */
+    font-size: 0.9em;
 }
 
 .ramo:last-child {
@@ -90,27 +111,27 @@ header p {
 }
 
 .ramo:hover:not(.aprobado):not(.bloqueado) {
-    background-color: #b384d4;
+    background-color: #9acfe0; /* Celeste pastel un poco más oscuro al pasar el mouse */
     transform: translateY(-2px);
     box-shadow: 0 3px 8px rgba(0, 0, 0, 0.05);
 }
 
-/* Estado: Aprobado */
+/* Estado: Aprobado - Morado Pastel */
 .ramo.aprobado {
-    background-color: #8a2be2;
-    color: white;
+    background-color: #d1b1e0; /* Morado pastel */
+    color: #333; /* Color de texto más oscuro para contraste con morado pastel */
     text-decoration: line-through;
     cursor: default;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
-    font-size: 0.85em; /* Considera ajustar si se ve muy pequeño con Playfair */
+    font-size: 0.85em;
 }
 
 .ramo.aprobado .nota {
     font-weight: bold;
     margin-top: 5px;
     display: block;
-    font-size: 0.8em; /* Considera ajustar si se ve muy pequeño con Playfair */
-    color: rgba(255, 255, 255, 0.9);
+    font-size: 0.8em;
+    color: rgba(51, 51, 51, 0.8); /* Ajustado para contraste */
 }
 
 /* Estado: Bloqueado por prerequisitos */
@@ -122,7 +143,7 @@ header p {
     filter: grayscale(10%);
     position: relative;
     pointer-events: none;
-    font-size: 0.85em; /* Considera ajustar si se ve muy pequeño con Playfair */
+    font-size: 0.85em;
 }
 
 .ramo.bloqueado::before {
@@ -139,8 +160,8 @@ header p {
 
 /* Nombre del ramo dentro del cuadro */
 .ramo span:first-child {
-    font-weight: 600; /* Puedes ajustar este peso si prefieres más ligero con Playfair */
-    font-size: 1.05em; /* Puedes ajustar este tamaño si Playfair se ve diferente */
+    font-weight: 600;
+    font-size: 1.05em;
     margin-bottom: 5px;
 }
 
