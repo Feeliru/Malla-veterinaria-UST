@@ -7,24 +7,24 @@ const malla = [
     { id: 'VET-171', name: 'Introducción a Medicina Veterinaria', semester: 1, prerequisites: [], noNota: true }, // SIN NOTA
     { id: 'MAT-016', name: 'Razonamiento Lógico Matemático', semester: 1, prerequisites: [] },
     { id: 'BIO-002', name: 'Biología Celular', semester: 1, prerequisites: [] },
-    { id: 'FGL-149', name: 'Taller de Competencias Comunicativas', semester: 1, prerequisites: [], noNota: true }, // SIN NOTA
-    { id: 'FGL-151', name: 'Taller de Desarrollo Personal I', semester: 1, prerequisites: [], noNota: true }, // SIN NOTA
+    { id: 'FGL-149', name: 'Taller de Competencias Comunicativas', semester: 1, prerequisites: [],
+    { id: 'FGL-151', name: 'Taller de Desarrollo Personal I', semester: 1, prerequisites: [],
 
     // Semestre 2
     { id: 'VET-147', name: 'Anatomía de Animales de Compañía', semester: 2, prerequisites: [] },
     { id: 'VET-122', name: 'Etología y Bienestar Animal', semester: 2, prerequisites: [] },
     { id: 'QUI-003', name: 'Química General y Orgánica', semester: 2, prerequisites: [] },
-    { id: 'FGL-152', name: 'Taller de Desarrollo Personal II', semester: 2, prerequisites: [], noNota: true }, // SIN NOTA
-    { id: 'FGL-001', name: 'Cultura y Valores', semester: 2, prerequisites: [], noNota: true }, // SIN NOTA
-    { id: 'COM-001', name: 'Taller de Competencias para el Aprendizaje', semester: 2, prerequisites: [], noNota: true }, // SIN NOTA
+    { id: 'FGL-152', name: 'Taller de Desarrollo Personal II', semester: 2, prerequisites: [],
+    { id: 'FGL-001', name: 'Cultura y Valores', semester: 2, prerequisites: [], noNota: true },
+    { id: 'COM-001', name: 'Taller de Competencias para el Aprendizaje', semester: 2, prerequisites: [],
 
     // Semestre 3
     { id: 'VET-148', name: 'Anatomía de Animales Mayores', semester: 3, prerequisites: ['VET-147'] }, // Anatomía de Animales de Compañía
     { id: 'VET-173', name: 'Histología y Embriología', semester: 3, prerequisites: ['BIO-002'] }, // Biología Celular
-    { id: 'FGL-008', name: 'Inglés Básico', semester: 3, prerequisites: [], noNota: true }, // SIN NOTA
+    { id: 'FGL-008', name: 'Inglés Básico', semester: 3, prerequisites: [],
     { id: 'VET-154', name: 'Estadística para una Salud', semester: 3, prerequisites: ['MAT-016'] }, // Razonamiento Lógico Matemático
     { id: 'BIO-003', name: 'Bioquímica General', semester: 3, prerequisites: ['QUI-003'] }, // Química General y Orgánica
-    { id: 'FGL-111', name: 'Persona y Sentido', semester: 3, prerequisites: [], noNota: true }, // SIN NOTA
+    { id: 'FGL-111', name: 'Persona y Sentido', semester: 3, prerequisites: [],
 
     // Semestre 4
     { id: 'VET-150', name: 'Fisiología Animal', semester: 4, prerequisites: ['VET-148'] }, // Anatomía de Animales Mayores
@@ -32,7 +32,7 @@ const malla = [
     { id: 'VET-175', name: 'Inmunología', semester: 4, prerequisites: ['BIO-002'] }, // Biología Celular
     { id: 'VET-151', name: 'Zootecnia y Genética Aplicada', semester: 4, prerequisites: ['VET-154'] }, // Estadística para una Salud
     { id: 'VET-177', name: 'Ecología y Fauna Silvestre', semester: 4, prerequisites: ['VET-069'] }, // Zoología
-    { id: 'VET-176', name: 'Práctica Básica', semester: 4, prerequisites: ['VET-122'], noNota: true }, // Etología y Bienestar Animal // SIN NOTA
+    { id: 'VET-176', name: 'Práctica Básica', semester: 4, prerequisites: ['VET-122'], // Etología y Bienestar Animal
     { id: 'VET-152', name: 'MEC Hito 1', semester: 4, prerequisites: ['VET-176'], noNota: true }, // Estar cursando Práctica Básica // SIN NOTA
 
     // Semestre 5
@@ -41,7 +41,7 @@ const malla = [
     { id: 'VET-154_b', name: 'Nutrición Animal', semester: 5, prerequisites: ['BIO-003'] }, // Bioquímica General (ID ajustado para no duplicar con Estadística)
     { id: 'VET-124', name: 'Reproducción Animal', semester: 5, prerequisites: ['VET-150'] }, // Fisiología
     { id: 'VET-155', name: 'Conservación y Gestión Ambiental', semester: 5, prerequisites: ['VET-177'] }, // Ecología y Fauna Silvestre
-    { id: 'FGL-010', name: 'Inglés Básico II', semester: 5, prerequisites: ['FGL-008'], noNota: true }, // Inglés Básico I // SIN NOTA
+    { id: 'FGL-010', name: 'Inglés Básico II', semester: 5, prerequisites: ['FGL-008'], // Inglés Básico I
 
     // Semestre 6
     { id: 'VET-156', name: 'Patología de Sistemas', semester: 6, prerequisites: ['VET-153'] }, // Fisiopatología
@@ -65,7 +65,7 @@ const malla = [
     { id: 'VET-183', name: 'Imagenología', semester: 8, prerequisites: ['VET-180'] }, // Semiología
     { id: 'VET-162', name: 'Sistemas de Producción de Rumiantes', semester: 8, prerequisites: ['VET-122', 'VET-124', 'VET-154_b'] }, // Etología y Bienestar Animal, Reproducción Animal, Nutrición Animal (ID ajustado)
     { id: 'VET-163', name: 'Medicina de la Conservación', semester: 8, prerequisites: ['VET-155', 'VET-160'] }, // Conservación y Gestión Ambiental, Epidemiología y Salud Pública
-    { id: 'VET-EL1', name: 'Electivo I', semester: 8, prerequisites: [], noNota: true }, // SIN NOTA
+    { id: 'VET-EL1', name: 'Electivo I', semester: 8, prerequisites: [],
     { id: 'VET-164', name: 'MEC Hito 2', semester: 8, prerequisites: ['VET-182'], noNota: true }, // Estar cursando Procedimientos Médicos // SIN NOTA
     { id: 'VET-165', name: 'Práctica Preprofesional', semester: 8, prerequisites: ['Semestre VIII Aprobado'], noNota: true }, // Semestre VIII aprobado // SIN NOTA
 
@@ -75,14 +75,14 @@ const malla = [
     { id: 'VET-103', name: 'Medicina del Equino', semester: 9, prerequisites: ['VET-182'] }, // Procedimientos Médicos
     { id: 'VET-101', name: 'Medicina Animales de Producción', semester: 9, prerequisites: ['VET-162'] }, // Sistemas de Producción de rumiantes
     { id: 'VET-184', name: 'Metodología de la Investigación Científica', semester: 9, prerequisites: ['VET-102', 'VET-178'] }, // Medicina de animales de compañía, Ética y legislación profesional
-    { id: 'VET-EL2', name: 'Electivo II', semester: 9, prerequisites: [], noNota: true }, // SIN NOTA
+    { id: 'VET-EL2', name: 'Electivo II', semester: 9, prerequisites: [],
 
     // Semestre 10
-    { id: 'VET-168', name: 'Internado de Animales Compañía', semester: 10, prerequisites: ['VET-166', 'VET-167'], noNota: true }, // Clínica de Animales Compañía, Cirugía y Anestesiología // SIN NOTA
-    { id: 'VET-169', name: 'Internado de Animales Mayores', semester: 10, prerequisites: ['VET-101', 'VET-103'], noNota: true }, // Medicina Animales de Producción, Medicina del Equino // SIN NOTA
+    { id: 'VET-168', name: 'Internado de Animales Compañía', semester: 10, prerequisites: ['VET-166', 'VET-167'],
+    { id: 'VET-169', name: 'Internado de Animales Mayores', semester: 10, prerequisites: ['VET-101', 'VET-103'],
     { id: 'VET-170', name: 'Módulo Integrador en Una Salud', semester: 10, prerequisites: ['VET-163', 'VET-187', 'VET-160'] }, // Medicina de la Conservación, Inocuidad Alimentaria, Epidemiología y Salud Pública
     { id: 'VET-185', name: 'Proyecto de Titulación', semester: 10, prerequisites: ['VET-184'], noNota: true }, // Metodología de la Investigación // SIN NOTA
-    { id: 'VET-EL3', name: 'Electivo III', semester: 10, prerequisites: [], noNota: true } // SIN NOTA
+    { id: 'VET-EL3', name: 'Electivo III', semester: 10, prerequisites: [],
 ];
 
 // Estado de la malla del usuario
