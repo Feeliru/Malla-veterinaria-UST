@@ -177,7 +177,7 @@ function handleRamoClick(ramoId, noNota) { // Recibe noNota
         // Si no está aprobado, aprobarlo
         if (noNota) { // Si es un ramo SIN NOTA, solo lo aprueba sin pedir nada
             currentStatus.approved = true;
-            currentStatus.grade = 'Aprobado'; // O puedes dejarlo vacío si prefieres
+            currentStatus.grade = 'Aprobado'; // O puedes dejarlo vacío si prefieres, para que no muestre nada
         } else { // Si es un ramo CON NOTA, pide la nota
             let grade = prompt(`Ingresa la nota para ${ramoId} (1.0 a 7.0):`);
             if (grade === null) { // Si el usuario cancela
@@ -193,6 +193,30 @@ function handleRamoClick(ramoId, noNota) { // Recibe noNota
             currentStatus.approved = true;
         }
     }
+
+    saveMallaStatus();
+    renderMalla(); // Volver a renderizar para actualizar el estado visual
+}
+
+// Verificar prerequisitos
+function checkPrerequisites(ramoId) {
+    const ramo = malla.find(r => r.id === ramoId);
+    if (!ramo || !ramo.prerequisites || ramo.prerequisites.length === 0) {
+        return true; // No tiene prerequisitos o el ramo no existe
+    }
+
+    // Caso especial para "Semestre VIII Aprobado"
+    if (ramo.prerequisites.includes('Semestre VIII Aprobado')) {
+        const semester8Ramos = malla.filter(r => r.semester === 8 && r.id !== ramoId); // Excluir el propio ramo
+        const allSemester8Approved = semester8Ramos.every(r => mallaStatus[r.id]?.approved);
+        return allSemester8Approved;
+    }
+
+    // Verificar prerequisitos normales
+    return ramo.prerequisites.every(prereqId => {
+        return mallaStatus[prereqId]?.approved;
+    });
+}
 
     saveMallaStatus();
     renderMalla(); // Volver a renderizar para actualizar el estado visual
