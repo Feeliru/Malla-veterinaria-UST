@@ -1,6 +1,6 @@
 /* Estilos Generales */
 body {
-    font-family: 'Playfair Display', serif; /* Ahora todo el cuerpo usa Playfair Display */
+    font-family: 'Playfair Display', serif;
     background-color: #f0f2f5;
     margin: 0;
     padding: 20px;
@@ -30,36 +30,37 @@ header p {
     color: #666;
 }
 
-/* Contenedor principal de la malla - DISPOSICIÓN HORIZONTAL CLAVE */
-#malla-container {
-    display: flex; /* Habilitamos Flexbox */
-    flex-direction: row; /* Los elementos hijos (semestres) se alinean en fila */
-    overflow-x: auto; /* Permite el scroll horizontal si los semestres exceden el ancho de la pantalla */
-    gap: 15px; /* Espacio entre los semestres */
-    padding: 20px 0; /* Un poco de padding arriba/abajo, y nada a los lados */
-    justify-content: flex-start; /* Alinea los semestres al inicio del contenedor */
-    align-items: flex-start; /* Alinea los semestres a la parte superior */
-    /* Añadimos un scrollbar más estilizado para navegadores webkit (Chrome, Safari) */
-    scrollbar-width: thin; /* "auto" o "none" */
-    scrollbar-color: #8a2be2 #f0f2f5; /* color del pulgar y del riel */
+/* Contenedor principal de la malla - DISPOSICIÓN HORIZONTAL */
+#malla-container.horizontal-scroll {
+    display: flex;
+    flex-direction: row;
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    gap: 15px;
+    padding: 20px 0;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: 100%;
+    box-sizing: border-box;
+
+    scrollbar-width: thin;
+    scrollbar-color: #8a2be2 #f0f2f5;
 }
 
-/* Estilo para el scrollbar en navegadores Webkit (Chrome, Safari, Edge) */
-#malla-container::-webkit-scrollbar {
-    height: 8px; /* Altura de la barra de desplazamiento horizontal */
+#malla-container.horizontal-scroll::-webkit-scrollbar {
+    height: 8px;
 }
 
-#malla-container::-webkit-scrollbar-track {
-    background: #f0f2f5; /* Color del fondo de la barra de desplazamiento */
+#malla-container.horizontal-scroll::-webkit-scrollbar-track {
+    background: #f0f2f5;
     border-radius: 10px;
 }
 
-#malla-container::-webkit-scrollbar-thumb {
-    background-color: #8a2be2; /* Color del "pulgar" (el que se arrastra) */
+#malla-container.horizontal-scroll::-webkit-scrollbar-thumb {
+    background-color: #8a2be2;
     border-radius: 10px;
-    border: 2px solid #f0f2f5; /* Espacio alrededor del pulgar */
+    border: 2px solid #f0f2f5;
 }
-
 
 /* Estilos para cada semestre - Componente individual en la fila */
 .semestre {
@@ -67,13 +68,15 @@ header p {
     border-radius: 8px;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
     padding: 15px;
-    flex: none; /* Asegura que no crezca ni encoja con el espacio disponible */
-    width: 220px; /* Ancho fijo para cada columna de semestre */
-    min-width: 220px; /* Asegura que no se haga más pequeño */
-    max-width: 220px; /* Asegura que no se haga más grande */
+    flex-shrink: 0;
+    flex-grow: 0;
+    flex-basis: 220px;
+    width: 220px;
+    min-width: 220px;
+    max-width: 220px;
     display: flex;
-    flex-direction: column; /* Los ramos dentro del semestre siguen siendo verticales */
-    height: auto; /* Permitir que la altura se ajuste al contenido */
+    flex-direction: column;
+    height: auto;
 }
 
 .semestre h2 {
@@ -88,10 +91,10 @@ header p {
     font-weight: 700;
 }
 
-/* Estilos para cada ramo - Más pequeño y color celeste pastel */
+/* Estilos para cada ramo - Celeste pastel y el nuevo Morado para aprobado */
 .ramo {
-    background-color: #add8e6; /* Celeste pastel */
-    border: 1px solid #94b2bf; /* Borde ligeramente más oscuro */
+    background-color: #add8e6; /* Celeste pastel para no aprobado */
+    border: 1px solid #94b2bf;
     padding: 10px;
     margin-bottom: 8px;
     border-radius: 5px;
@@ -116,22 +119,31 @@ header p {
     box-shadow: 0 3px 8px rgba(0, 0, 0, 0.05);
 }
 
-/* Estado: Aprobado - Morado Pastel */
+/* Estado: Aprobado - NUEVO COLOR: #983ae0 */
 .ramo.aprobado {
-    background-color: #d1b1e0; /* Morado pastel */
-    color: #333; /* Color de texto más oscuro para contraste con morado pastel */
-    text-decoration: line-through;
+    background-color: #983ae0; /* ¡Aquí el nuevo color morado! */
+    color: white; /* Cambiado a blanco para mejor contraste con el morado oscuro */
+    text-decoration: none;
     cursor: default;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
     font-size: 0.85em;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
 }
 
+/* Estilo para la nota dentro del ramo aprobado */
 .ramo.aprobado .nota {
     font-weight: bold;
-    margin-top: 5px;
-    display: block;
-    font-size: 0.8em;
-    color: rgba(51, 51, 51, 0.8); /* Ajustado para contraste */
+    margin-left: 10px;
+    font-size: 1.5em;
+    color: white; /* Cambiado a blanco para mejor contraste con el nuevo morado */
+    flex-shrink: 0;
+}
+
+/* Ocultar la nota si el ramo no está aprobado o está bloqueado */
+.ramo:not(.aprobado) .nota {
+    display: none;
 }
 
 /* Estado: Bloqueado por prerequisitos */
@@ -162,7 +174,6 @@ header p {
 .ramo span:first-child {
     font-weight: 600;
     font-size: 1.05em;
-    margin-bottom: 5px;
 }
 
 /* Footer */
