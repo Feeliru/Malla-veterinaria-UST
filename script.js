@@ -1,215 +1,216 @@
+// La malla curricular de Medicina Veterinaria UST 2023
+// Referencia del PDF "PLAN 5 ESTUDIO_MVET 2023 PREREQUISITOS ACTUALIZADOS.pdf"
+
+const malla = [
+    // Semestre 1
+    { id: 'VET-069', name: 'Zoología', semester: 1, prerequisites: [] },
+    { id: 'VET-171', name: 'Introducción a Medicina Veterinaria', semester: 1, prerequisites: [], noNota: true }, // SIN NOTA
+    { id: 'MAT-016', name: 'Razonamiento Lógico Matemático', semester: 1, prerequisites: [] },
+    { id: 'BIO-002', name: 'Biología Celular', semester: 1, prerequisites: [] },
+    { id: 'FGL-149', name: 'Taller de Competencias Comunicativas', semester: 1, prerequisites: [] },
+    { id: 'FGL-151', name: 'Taller de Desarrollo Personal I', semester: 1, prerequisites: [] }, // SIN NOTA
+
+    // Semestre 2
+    { id: 'VET-147', name: 'Anatomía de Animales de Compañía', semester: 2, prerequisites: [] },
+    { id: 'VET-122', name: 'Etología y Bienestar Animal', semester: 2, prerequisites: [] },
+    { id: 'QUI-003', name: 'Química General y Orgánica', semester: 2, prerequisites: [] },
+    { id: 'FGL-152', name: 'Taller de Desarrollo Personal II', semester: 2, prerequisites: [] }, // SIN NOTA
+    { id: 'FGL-001', name: 'Cultura y Valores', semester: 2, prerequisites: [] },
+    { id: 'COM-001', name: 'Taller de Competencias para el Aprendizaje', semester: 2, prerequisites: [] },
+
+    // Semestre 3
+    { id: 'VET-148', name: 'Anatomía de Animales Mayores', semester: 3, prerequisites: ['VET-147'] }, // Anatomía de Animales de Compañía [cite: 195, 198]
+    { id: 'VET-173', name: 'Histología y Embriología', semester: 3, prerequisites: ['BIO-002'] }, // Biología Celular [cite: 195, 198]
+    { id: 'FGL-008', name: 'Inglés Básico', semester: 3, prerequisites: [] },
+    { id: 'VET-154', name: 'Estadística para una Salud', semester: 3, prerequisites: ['MAT-016'] }, // Razonamiento Lógico Matemático [cite: 195, 198]
+    { id: 'BIO-003', name: 'Bioquímica General', semester: 3, prerequisites: ['QUI-003'] }, // Química General y Orgánica [cite: 195, 198]
+    { id: 'FGL-111', name: 'Persona y Sentido', semester: 3, prerequisites: [] },
+
+    // Semestre 4
+    { id: 'VET-150', name: 'Fisiología Animal', semester: 4, prerequisites: ['VET-148'] }, // Anatomía de Animales Mayores [cite: 195, 198]
+    { id: 'VET-076', name: 'Microbiología', semester: 4, prerequisites: ['VET-173'] }, // Histología y Embriología [cite: 195, 198]
+    { id: 'VET-175', name: 'Inmunología', semester: 4, prerequisites: ['BIO-002'] }, // Biología Celular [cite: 195, 198]
+    { id: 'VET-151', name: 'Zootecnia y Genética Aplicada', semester: 4, prerequisites: ['VET-154'] }, // Estadística para una Salud [cite: 195, 198]
+    { id: 'VET-177', name: 'Ecología y Fauna Silvestre', semester: 4, prerequisites: ['VET-069'] }, // Zoología [cite: 195, 198]
+    { id: 'VET-176', name: 'Práctica Básica', semester: 4, prerequisites: ['VET-122'], noNota: true }, // Etología y Bienestar Animal [cite: 195, 198] // SIN NOTA
+    { id: 'VET-152', name: 'MEC Hito 1', semester: 4, prerequisites: ['VET-176'], noNota: true }, // Estar cursando Práctica Básica [cite: 195, 198] // SIN NOTA
+
+    // Semestre 5
+    { id: 'VET-153', name: 'Fisiopatología', semester: 5, prerequisites: ['VET-150'] }, // Fisiología [cite: 195, 198]
+    { id: 'VET-186', name: 'Enfermedades Parasitarias', semester: 5, prerequisites: ['VET-175'] }, // Inmunología [cite: 195, 198]
+    { id: 'VET-154', name: 'Nutrición Animal', semester: 5, prerequisites: ['BIO-003'] }, // Bioquímica General [cite: 195, 198]
+    { id: 'VET-124', name: 'Reproducción Animal', semester: 5, prerequisites: ['VET-150'] }, // Fisiología [cite: 195, 198]
+    { id: 'VET-155', name: 'Conservación y Gestión Ambiental', semester: 5, prerequisites: ['VET-177'] }, // Ecología y Fauna Silvestre [cite: 195, 198]
+    { id: 'FGL-010', name: 'Inglés Básico II', semester: 5, prerequisites: ['FGL-008'] }, // Inglés Básico I [cite: 195, 198]
+
+    // Semestre 6
+    { id: 'VET-156', name: 'Patología de Sistemas', semester: 6, prerequisites: ['VET-153'] }, // Fisiopatología [cite: 195, 198]
+    { id: 'VET-084', name: 'Farmacología', semester: 6, prerequisites: ['VET-153'] }, // Fisiopatología [cite: 195, 198]
+    { id: 'VET-179', name: 'Enfermedades Infecciosas', semester: 6, prerequisites: ['VET-076'] }, // Microbiología [cite: 195, 198]
+    { id: 'VET-154', name: 'Alimentación Animal', semester: 6, prerequisites: ['VET-154'] }, // Nutrición Animal [cite: 195, 198]
+    { id: 'VET-158', name: 'Gestión de Negocios Veterinarios', semester: 6, prerequisites: ['MAT-016'] }, // Razonamiento Lógico Matemático [cite: 195, 198]
+    { id: 'VET-178', name: 'Ética y Legislación Profesional', semester: 6, prerequisites: ['VET-176'] }, // Práctica Básica [cite: 195, 198]
+
+    // Semestre 7
+    { id: 'VET-180', name: 'Semiología', semester: 7, prerequisites: ['VET-156'] }, // Patología de Sistemas [cite: 195, 198]
+    { id: 'VET-129', name: 'Patología Clínica', semester: 7, prerequisites: ['VET-156'] }, // Patología de sistemas [cite: 195, 198]
+    { id: 'VET-159', name: 'Sistema de Producción de Monogástricos', semester: 7, prerequisites: ['VET-151', 'VET-122'] }, // Zootecnia y Mejoramiento Genético, Etología y Bienestar Animal [cite: 195, 198]
+    { id: 'VET-160', name: 'Epidemiología y Salud Pública', semester: 7, prerequisites: ['VET-186', 'VET-179'] }, // Enfermedades Parasitarias, Enfermedades infecciosas [cite: 195, 198]
+    { id: 'VET-187', name: 'Inocuidad Alimentaria', semester: 7, prerequisites: ['VET-076'] }, // Microbiología [cite: 195, 198]
+    { id: 'VET-161', name: 'Innovación y Emprendimiento', semester: 7, prerequisites: ['VET-158'] }, // Gestión de Negocios Veterinarios [cite: 195, 198]
+
+    // Semestre 8
+    { id: 'VET-102', name: 'Medicina Animales de Compañía', semester: 8, prerequisites: ['VET-129'] }, // Patología Clínica [cite: 195, 198]
+    { id: 'VET-182', name: 'Procedimientos Médicos', semester: 8, prerequisites: ['VET-180'] }, // Semiología [cite: 195, 198]
+    { id: 'VET-183', name: 'Imagenología', semester: 8, prerequisites: ['VET-180'] }, // Semiología [cite: 195, 198]
+    { id: 'VET-162', name: 'Sistemas de Producción de Rumiantes', semester: 8, prerequisites: ['VET-122', 'VET-124', 'VET-154'] }, // Etología y Bienestar Animal, Reproducción Animal, Nutrición Animal [cite: 195, 198]
+    { id: 'VET-163', name: 'Medicina de la Conservación', semester: 8, prerequisites: ['VET-155', 'VET-160'] }, // Conservación y Gestión Ambiental, Epidemiología y Salud Pública [cite: 195, 198]
+    { id: 'VET-EL1', name: 'Electivo I', semester: 8, prerequisites: [] },
+    { id: 'VET-164', name: 'MEC Hito 2', semester: 8, prerequisites: ['VET-182'], noNota: true }, // Estar cursando Procedimientos Médicos [cite: 195, 198] // SIN NOTA
+    { id: 'VET-165', name: 'Práctica Preprofesional', semester: 8, prerequisites: ['Semestre VIII Aprobado'], noNota: true }, // Semestre VIII aprobado [cite: 195, 198] // SIN NOTA
+
+    // Semestre 9
+    { id: 'VET-166', name: 'Clínica Animales Compañía', semester: 9, prerequisites: ['VET-102', 'VET-182'] }, // Medicina Animales de Compañía, Procedimientos Médicos [cite: 195, 198]
+    { id: 'VET-167', name: 'Cirugía y Anestesiología', semester: 9, prerequisites: ['VET-084', 'VET-183'] }, // Farmacología, Imagenología [cite: 195, 198]
+    { id: 'VET-103', name: 'Medicina del Equino', semester: 9, prerequisites: ['VET-182'] }, // Procedimientos Médicos [cite: 195, 198]
+    { id: 'VET-101', name: 'Medicina Animales de Producción', semester: 9, prerequisites: ['VET-162'] }, // Sistemas de Producción de rumiantes [cite: 195, 198]
+    { id: 'VET-184', name: 'Metodología de la Investigación Científica', semester: 9, prerequisites: ['VET-102', 'VET-178'] }, // Medicina de animales de compañía, Ética y legislación profesional [cite: 195, 198]
+    { id: 'VET-EL2', name: 'Electivo II', semester: 9, prerequisites: [] },
+
+    // Semestre 10
+    { id: 'VET-168', name: 'Internado de Animales Compañía', semester: 10, prerequisites: ['VET-166', 'VET-167'], noNota: true }, // Clínica de Animales Compañía, Cirugía y Anestesiología [cite: 195, 198] // SIN NOTA
+    { id: 'VET-169', name: 'Internado de Animales Mayores', semester: 10, prerequisites: ['VET-101', 'VET-103'], noNota: true }, // Medicina Animales de Producción, Medicina del Equino [cite: 195, 198] // SIN NOTA
+    { id: 'VET-170', name: 'Módulo Integrador en Una Salud', semester: 10, prerequisites: ['VET-163', 'VET-187', 'VET-160'] }, // Medicina de la Conservación, Inocuidad Alimentaria, Epidemiología y Salud Pública [cite: 195, 198]
+    { id: 'VET-185', name: 'Proyecto de Titulación', semester: 10, prerequisites: ['VET-184'], noNota: true }, // Metodología de la Investigación [cite: 195, 198] // SIN NOTA
+    { id: 'VET-EL3', name: 'Electivo III', semester: 10, prerequisites: [] }
+];
+
+// Estado de la malla del usuario
+let mallaStatus = {}; // { ramoId: { approved: true/false, grade: 'nota' } }
+const LOCAL_STORAGE_KEY = 'mallaMedicinaVeterinariaUSTStatus';
+
+// Función para inicializar la malla y cargar el estado
 document.addEventListener('DOMContentLoaded', () => {
-    // --- DEFINICIÓN DE LA MALLA ACADÉMICA DE MEDICINA VETERINARIA UST ---
-    // ¡IMPORTANTE!: Esta sección ya ha sido populada con la información del PDF.
-    // 'id': Un identificador único para el ramo (código del ramo).
-    // 'nombre': El nombre completo del ramo.
-    // 'semestre': El número de semestre en que se imparte.
-    // 'aprobado': true si ya lo tienes aprobado, false si no.
-    // 'nota': La nota si ya está aprobado, null si no.
-    // 'prerequisitos': Un array con los 'id' (códigos) de los ramos que son prerequisitos.
-    let malla = [
-        // Semestre 1 
-        { id: "VET-069", nombre: "Zoología", semestre: 1, aprobado: false, nota: null, prerequisitos: [] },
-        { id: "VET-171", nombre: "Intro. Medicina Veterinaria", semestre: 1, aprobado: false, nota: null, prerequisitos: [] },
-        { id: "MAT-016", nombre: "Razonamiento Lógico Matemático", semestre: 1, aprobado: false, nota: null, prerequisitos: [] },
-        { id: "BIO-002", nombre: "Biología Celular", semestre: 1, aprobado: false, nota: null, prerequisitos: [] },
-        { id: "FGL-149", nombre: "Taller de Competencias Comunicativas", semestre: 1, aprobado: false, nota: null, prerequisitos: [] },
-        { id: "FGL-151", nombre: "Taller de Desarrollo Personal I", semestre: 1, aprobado: false, nota: null, prerequisitos: [] },
-
-        // Semestre 2 
-        // NOTA: Los semestres en el PDF pueden ser un poco confusos en la numeración,
-        // asumo la siguiente numeración lógica de semestres consecutivos.
-        { id: "VET-147", nombre: "Anatomía de Animales de Compañía", semestre: 2, aprobado: false, nota: null, prerequisitos: [] },
-        { id: "VET-122", nombre: "Etología y Bienestar Animal", semestre: 2, aprobado: false, nota: null, prerequisitos: [] },
-        { id: "QUI-003", nombre: "Química General y Orgánica", semestre: 2, aprobado: false, nota: null, prerequisitos: [] },
-        { id: "FGL-152", nombre: "Taller de Desarrollo Personal II", semestre: 2, aprobado: false, nota: null, prerequisitos: [] },
-        { id: "FGL-001", nombre: "Cultura y Valores", semestre: 2, aprobado: false, nota: null, prerequisitos: [] },
-        { id: "COM-001", nombre: "Taller de Competencias para el Aprendizaje", semestre: 2, aprobado: false, nota: null, prerequisitos: [] },
-
-        // Semestre 3 
-        { id: "VET-148", nombre: "Anatomía de Animales Mayores", semestre: 3, aprobado: false, nota: null, prerequisitos: ["VET-147"] },
-        { id: "VET-173", nombre: "Histología y Embriología", semestre: 3, aprobado: false, nota: null, prerequisitos: ["BIO-002"] },
-        { id: "FGL-008", nombre: "Inglés Básico", semestre: 3, aprobado: false, nota: null, prerequisitos: [] },
-        { id: "VET-154_old", nombre: "Estadística para una Salud", semestre: 3, aprobado: false, nota: null, prerequisitos: ["MAT-016"] }, // Renombrado para evitar conflicto con VET-154 Nutrición Animal
-        { id: "BIO-003", nombre: "Bioquímica General", semestre: 3, aprobado: false, nota: null, prerequisitos: ["QUI-003"] },
-        { id: "FGL-111", nombre: "Persona y Sentido", semestre: 3, aprobado: false, nota: null, prerequisitos: [] },
-
-        // Semestre 4 
-        { id: "VET-150", nombre: "Fisiología Animal", semestre: 4, aprobado: false, nota: null, prerequisitos: ["VET-148"] },
-        { id: "VET-076", nombre: "Microbiología", semestre: 4, aprobado: false, nota: null, prerequisitos: ["VET-173"] },
-        { id: "VET-175", nombre: "Inmunología", semestre: 4, aprobado: false, nota: null, prerequisitos: ["BIO-002"] },
-        { id: "VET-151", nombre: "Zootecnia y Genética Aplicada", semestre: 4, aprobado: false, nota: null, prerequisitos: ["VET-154_old"] }, // Prereq: Estadística para una Salud
-        { id: "VET-177", nombre: "Ecología y Fauna Silvestre", semestre: 4, aprobado: false, nota: null, prerequisitos: ["VET-069"] },
-        { id: "VET-176", nombre: "Práctica Básica", semestre: 4, aprobado: false, nota: null, prerequisitos: ["VET-122"] },
-        { id: "VET-152", nombre: "MEC Hito 1", semestre: 4, aprobado: false, nota: null, prerequisitos: ["VET-176"] }, // "Estar cursando Práctica Básica" - lo interpretamos como aprobado para este ejercicio.
-
-        // Semestre 5 
-        { id: "VET-153", nombre: "Fisiopatología", semestre: 5, aprobado: false, nota: null, prerequisitos: ["VET-150"] },
-        { id: "VET-186", nombre: "Enfermedades Parasitarias", semestre: 5, aprobado: false, nota: null, prerequisitos: ["VET-175"] },
-        { id: "VET-154", nombre: "Nutrición Animal", semestre: 5, aprobado: false, nota: null, prerequisitos: ["BIO-003"] }, // Cuidado con ID VET-154, hay dos en el PDF
-        { id: "VET-124", nombre: "Reproducción Animal", semestre: 5, aprobado: false, nota: null, prerequisitos: ["VET-150"] },
-        { id: "VET-155", nombre: "Conservación y Gestión Ambiental", semestre: 5, aprobado: false, nota: null, prerequisitos: ["VET-177"] },
-        { id: "FGL-010", nombre: "Inglés Básico II", semestre: 5, aprobado: false, nota: null, prerequisitos: ["FGL-008"] },
-
-        // Semestre 6 
-        { id: "VET-156", nombre: "Patología de Sistemas", semestre: 6, aprobado: false, nota: null, prerequisitos: ["VET-153"] },
-        { id: "VET-084", nombre: "Farmacología", semestre: 6, aprobado: false, nota: null, prerequisitos: ["VET-153"] },
-        { id: "VET-179", nombre: "Enfermedades Infecciosas", semestre: 6, aprobado: false, nota: null, prerequisitos: ["VET-076"] },
-        { id: "VET-154_Alim", nombre: "Alimentación Animal", semestre: 6, aprobado: false, nota: null, prerequisitos: ["VET-154"] }, // Cuidado con ID VET-154
-        { id: "VET-158", nombre: "Gestión de Negocios Veterinarios", semestre: 6, aprobado: false, nota: null, prerequisitos: ["MAT-016"] },
-        { id: "VET-178", nombre: "Ética y Legislación Profesional", semestre: 6, aprobado: false, nota: null, prerequisitos: ["VET-176"] },
-
-        // Semestre 7 
-        { id: "VET-180", nombre: "Semiología", semestre: 7, aprobado: false, nota: null, prerequisitos: ["VET-156"] },
-        { id: "VET-129", nombre: "Patología Clínica", semestre: 7, aprobado: false, nota: null, prerequisitos: ["VET-156"] },
-        { id: "VET-159", nombre: "Sistemas de Producción de Monogástricos", semestre: 7, aprobado: false, nota: null, prerequisitos: ["VET-151", "VET-122"] }, // Zootecnia y Mej.Genético, Etología y Bien. Animal
-        { id: "VET-160", nombre: "Epidemiología y Salud Pública", semestre: 7, aprobado: false, nota: null, prerequisitos: ["VET-186", "VET-179"] }, // Enf. Parasitarias, Enf. Infecciosas
-        { id: "VET-187", nombre: "Inocuidad Alimentaria", semestre: 7, aprobado: false, nota: null, prerequisitos: ["VET-076"] },
-        { id: "VET-161", nombre: "Innovación y Emprendimiento", semestre: 7, aprobado: false, nota: null, prerequisitos: ["VET-158"] },
-
-        // Semestre 8 
-        { id: "VET-102", nombre: "Medicina Animales de Compañía", semestre: 8, aprobado: false, nota: null, prerequisitos: ["VET-129"] },
-        { id: "VET-182", nombre: "Procedimientos Médicos", semestre: 8, aprobado: false, nota: null, prerequisitos: ["VET-180"] },
-        { id: "VET-183", nombre: "Imagenología", semestre: 8, aprobado: false, nota: null, prerequisitos: ["VET-180"] },
-        { id: "VET-162", nombre: "Sistemas de Producción de Rumiantes", semestre: 8, aprobado: false, nota: null, prerequisitos: ["VET-122", "VET-124", "VET-154"] }, // Etología y B.A., Reproducción Animal, Nutrición Animal
-        { id: "VET-163", nombre: "Medicina de la Conservación", semestre: 8, aprobado: false, nota: null, prerequisitos: ["VET-155", "VET-160"] }, // Conservación y G.A., Epidemiología y S.P.
-        { id: "VET-EL1", nombre: "Electivo I", semestre: 8, aprobado: false, nota: null, prerequisitos: [] },
-        { id: "VET-164", nombre: "MEC Hito 2", semestre: 8, aprobado: false, nota: null, prerequisitos: ["VET-182"] }, // "Estar cursando Procedimientos Médicos"
-
-        // Semestre 9 
-        { id: "VET-165", nombre: "Práctica Preprofesional", semestre: 9, aprobado: false, nota: null, prerequisitos: ["VET-102", "VET-182", "VET-183", "VET-162", "VET-163", "VET-EL1", "VET-164"] }, // Asumo "Semestre VIII aprobado" significa todos los ramos del semestre 8
-        { id: "VET-166", nombre: "Clínica Animales Compañía", semestre: 9, aprobado: false, nota: null, prerequisitos: ["VET-102", "VET-182"] }, // Medicina An. Compañía, Procedimientos Médicos
-        { id: "VET-167", nombre: "Cirugía y Anestesiología", semestre: 9, aprobado: false, nota: null, prerequisitos: ["VET-084", "VET-183"] }, // Farmacología, Imagenología
-        { id: "VET-103", nombre: "Medicina del Equino", semestre: 9, aprobado: false, nota: null, prerequisitos: ["VET-182"] },
-        { id: "VET-101", nombre: "Medicina Animales de Producción", semestre: 9, aprobado: false, nota: null, prerequisitos: ["VET-162"] },
-        { id: "VET-184", nombre: "Metodología de la Investigación Científica", semestre: 9, aprobado: false, nota: null, prerequisitos: ["VET-102", "VET-178"] }, // Med. An. Compañía, Ética y Leg. Profesional
-        { id: "VET-EL2", nombre: "Electivo II", semestre: 9, aprobado: false, nota: null, prerequisitos: [] },
-
-        // Semestre 10 
-        { id: "VET-168", nombre: "Internado de Animales Compañía", semestre: 10, aprobado: false, nota: null, prerequisitos: ["VET-166", "VET-167"] }, // Clínica An. Compañía, Cirugía y Anestesiología
-        { id: "VET-169", nombre: "Internado de Animales Mayores", semestre: 10, aprobado: false, nota: null, prerequisitos: ["VET-101", "VET-103"] }, // Med. An. Producción, Med. del Equino
-        { id: "VET-170", nombre: "Módulo Integrador en Una Salud", semestre: 10, aprobado: false, nota: null, prerequisitos: ["VET-163", "VET-187", "VET-160"] }, // Med. de la Cons., Inoc. Alimentaria, Epidemiología y S.P.
-        { id: "VET-185", nombre: "Proyecto de Titulación", semestre: 10, aprobado: false, nota: null, prerequisitos: ["VET-184"] }, // Metodología de la Investigación
-        { id: "VET-EL3", nombre: "Electivo III", semestre: 10, aprobado: false, nota: null, prerequisitos: [] },
-    ];
-
-    const mallaContainer = document.getElementById('malla-container');
-    const LOCAL_STORAGE_KEY = 'mallaMedicinaVeterinariaUSTStatus'; // Clave específica para esta malla
-
-    // --- Cargar el estado guardado al inicio ---
-    function loadMallaStatus() {
-        const savedMalla = localStorage.getItem(LOCAL_STORAGE_KEY);
-        if (savedMalla) {
-            const parsedMalla = JSON.parse(savedMalla);
-            // Fusionar el estado guardado con la definición actual de la malla
-            malla.forEach(ramoOriginal => {
-                const savedRamo = parsedMalla.find(r => r.id === ramoOriginal.id);
-                if (savedRamo) {
-                    ramoOriginal.aprobado = savedRamo.aprobado;
-                    ramoOriginal.nota = savedRamo.nota;
-                }
-            });
-        }
-    }
-
-    // --- Guardar el estado actual de la malla ---
-    function saveMallaStatus() {
-        localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(malla));
-    }
-
-    // --- Función para verificar si un ramo cumple sus prerequisitos ---
-    function meetsPrerequisites(ramoId) {
-        const ramo = malla.find(r => r.id === ramoId);
-        if (!ramo) return false; // Ramo no encontrado
-
-        // Si no tiene prerequisitos, se puede aprobar
-        if (ramo.prerequisitos.length === 0) return true;
-
-        // Comprobar si todos los prerequisitos están aprobados
-        return ramo.prerequisitos.every(prereqId => {
-            const prereqRamo = malla.find(r => r.id === prereqId);
-            return prereqRamo && prereqRamo.aprobado;
-        });
-    }
-
-    // --- Función para renderizar (dibujar) la malla en el HTML ---
-    function renderMalla() {
-        mallaContainer.innerHTML = ''; // Limpiar el contenedor antes de redibujar
-
-        // Agrupar los ramos por semestre
-        const semestresAgrupados = malla.reduce((acc, ramo) => {
-            if (!acc[ramo.semestre]) {
-                acc[ramo.semestre] = [];
-            }
-            acc[ramo.semestre].push(ramo);
-            return acc;
-        }, {});
-
-        // Ordenar los semestres y crear los divs para cada uno
-        Object.keys(semestresAgrupados).sort((a, b) => a - b).forEach(semestreNum => {
-            const semestreDiv = document.createElement('div');
-            semestreDiv.classList.add('semestre');
-            semestreDiv.innerHTML = `<h2>Semestre ${semestreNum}</h2>`;
-
-            // Ordenar los ramos dentro del semestre alfabéticamente
-            semestresAgrupados[semestreNum].sort((a, b) => a.nombre.localeCompare(b.nombre)).forEach(ramo => {
-                const ramoDiv = document.createElement('div');
-                ramoDiv.classList.add('ramo');
-                ramoDiv.setAttribute('data-id', ramo.id); // Guardamos el ID en el HTML
-
-                // Aplicar clases CSS según el estado del ramo
-                if (ramo.aprobado) {
-                    ramoDiv.classList.add('aprobado');
-                } else if (!meetsPrerequisites(ramo.id)) {
-                    ramoDiv.classList.add('bloqueado');
-                }
-
-                // Contenido del ramo: nombre y nota si está aprobado
-                ramoDiv.innerHTML = `<span>${ramo.nombre}</span>`;
-                if (ramo.aprobado && ramo.nota !== null) {
-                    ramoDiv.innerHTML += `<span class="nota">Nota: ${ramo.nota}</span>`;
-                }
-
-                // Añadir el evento click SOLO si el ramo no está aprobado y cumple los prerequisitos
-                if (!ramo.aprobado && meetsPrerequisites(ramo.id)) {
-                    ramoDiv.addEventListener('click', () => aprobarRamo(ramo.id));
-                }
-
-                semestreDiv.appendChild(ramoDiv);
-            });
-            mallaContainer.appendChild(semestreDiv);
-        });
-    }
-
-    // --- Función para manejar la aprobación de un ramo ---
-    function aprobarRamo(ramoId) {
-        const ramoIndex = malla.findIndex(r => r.id === ramoId);
-
-        // Asegurarse de que el ramo existe, no está aprobado y cumple los prerequisitos
-        if (ramoIndex > -1 && !malla[ramoIndex].aprobado && meetsPrerequisites(ramoId)) {
-            let notaInput = prompt(`Ingresa la nota con la que aprobaste "${malla[ramoIndex].nombre}" (1.0 a 7.0):`);
-
-            // Validar la nota
-            let nota = parseFloat(notaInput);
-            // Considera notas chilenas, de 1.0 a 7.0, con 4.0 como aprobado.
-            if (isNaN(nota) || nota < 1.0 || nota > 7.0) {
-                alert("Nota inválida. Por favor, ingresa un número entre 1.0 y 7.0.");
-                return; // No aprobar el ramo si la nota es inválida
-            }
-
-            malla[ramoIndex].aprobado = true;
-            malla[ramoIndex].nota = nota.toFixed(1); // Formatear a un decimal
-
-            saveMallaStatus(); // Guardar el nuevo estado
-            renderMalla();     // Volver a renderizar la malla para actualizar la interfaz
-        } else if (malla[ramoIndex].aprobado) {
-            alert(`"${malla[ramoIndex].nombre}" ya está aprobado.`);
-        } else {
-            alert(`No puedes aprobar "${malla[ramoIndex].nombre}" aún. Necesitas aprobar sus prerequisitos primero.`);
-        }
-    }
-
-    // --- Inicialización de la aplicación ---
-    loadMallaStatus(); // Cargar el estado guardado al iniciar
-    renderMalla();     // Dibujar la malla inicial
+    loadMallaStatus();
+    renderMalla();
 });
+
+// Cargar estado desde localStorage
+function loadMallaStatus() {
+    const savedStatus = localStorage.getItem(LOCAL_STORAGE_KEY);
+    if (savedStatus) {
+        mallaStatus = JSON.parse(savedStatus);
+    } else {
+        // Inicializar todos los ramos como no aprobados si no hay nada guardado
+        malla.forEach(ramo => {
+            mallaStatus[ramo.id] = { approved: false, grade: '' };
+        });
+    }
+}
+
+// Guardar estado en localStorage
+function saveMallaStatus() {
+    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(mallaStatus));
+}
+
+// Renderizar la malla en el HTML
+function renderMalla() {
+    const mallaContainer = document.getElementById('malla-container');
+    mallaContainer.innerHTML = ''; // Limpiar contenedor antes de renderizar
+
+    // Obtener todos los semestres únicos
+    const semesters = [...new Set(malla.map(ramo => ramo.semester))].sort((a, b) => a - b);
+
+    semesters.forEach(semesterNum => {
+        const semestreDiv = document.createElement('div');
+        semestreDiv.classList.add('semestre');
+        semestreDiv.innerHTML = `<h2>Semestre ${semesterNum}</h2>`;
+
+        const ramosEnSemestre = malla.filter(ramo => ramo.semester === semesterNum);
+
+        ramosEnSemestre.forEach(ramo => {
+            const ramoDiv = document.createElement('div');
+            ramoDiv.classList.add('ramo');
+            ramoDiv.dataset.id = ramo.id; // Guarda el ID del ramo en el elemento HTML
+
+            const isApproved = mallaStatus[ramo.id]?.approved;
+            const grade = mallaStatus[ramo.id]?.grade || ''; // Obtener la nota o cadena vacía
+
+            let isBlocked = !checkPrerequisites(ramo.id);
+
+            // Determinar clases CSS
+            if (isApproved) {
+                ramoDiv.classList.add('aprobado');
+            } else if (isBlocked) {
+                ramoDiv.classList.add('bloqueado');
+            }
+
+            // Contenido del ramo: nombre y nota (si aplica)
+            ramoDiv.innerHTML = `<span>${ramo.name}</span>`;
+            if (isApproved && !ramo.noNota) { // Solo muestra la nota si está aprobado Y NO es un ramo sin nota
+                ramoDiv.innerHTML += `<span class="nota">${grade}</span>`;
+            }
+
+            ramoDiv.addEventListener('click', () => handleRamoClick(ramo.id, ramo.noNota)); // Pasar noNota al handler
+
+            semestreDiv.appendChild(ramoDiv);
+        });
+        mallaContainer.appendChild(semestreDiv);
+    });
+}
+
+// Manejar clic en un ramo
+function handleRamoClick(ramoId, noNota) { // Recibe noNota
+    const currentStatus = mallaStatus[ramoId];
+    const ramoElement = document.querySelector(`.ramo[data-id="${ramoId}"]`);
+
+    if (ramoElement.classList.contains('bloqueado')) {
+        alert('Este ramo está bloqueado. Primero debes aprobar sus prerequisitos.');
+        return;
+    }
+
+    if (currentStatus.approved) {
+        // Si ya está aprobado, desaprobarlo
+        currentStatus.approved = false;
+        currentStatus.grade = '';
+    } else {
+        // Si no está aprobado, aprobarlo
+        if (!noNota) { // Pide nota solo si el ramo NO tiene la propiedad noNota: true
+            let grade = prompt(`Ingresa la nota para ${ramoId} (1.0 a 7.0):`);
+            if (grade === null) { // Si el usuario cancela
+                return;
+            }
+            grade = parseFloat(grade.replace(',', '.')); // Reemplazar coma por punto y convertir a número
+
+            if (isNaN(grade) || grade < 1.0 || grade > 7.0) {
+                alert('Nota inválida. Por favor, ingresa un número entre 1.0 y 7.0.');
+                return;
+            }
+            currentStatus.grade = grade.toFixed(1); // Formatear a un decimal
+        }
+        currentStatus.approved = true;
+    }
+
+    saveMallaStatus();
+    renderMalla(); // Volver a renderizar para actualizar el estado visual
+}
+
+// Verificar prerequisitos
+function checkPrerequisites(ramoId) {
+    const ramo = malla.find(r => r.id === ramoId);
+    if (!ramo || !ramo.prerequisites || ramo.prerequisites.length === 0) {
+        return true; // No tiene prerequisitos o el ramo no existe
+    }
+
+    // Caso especial para "Semestre VIII Aprobado"
+    if (ramo.prerequisites.includes('Semestre VIII Aprobado')) {
+        const semester8Ramos = malla.filter(r => r.semester === 8 && r.id !== ramoId); // Excluir el propio ramo
+        const allSemester8Approved = semester8Ramos.every(r => mallaStatus[r.id]?.approved);
+        return allSemester8Approved;
+    }
+
+    // Verificar prerequisitos normales
+    return ramo.prerequisites.every(prereqId => {
+        return mallaStatus[prereqId]?.approved;
+    });
+}
