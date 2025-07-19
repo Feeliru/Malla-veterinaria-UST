@@ -1,124 +1,145 @@
+/* Estilos Generales */
 body {
-  font-family: sans-serif;
-  background: #f7f6fb;
-  padding: 20px;
-  color: #333;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f0f2f5;
+    margin: 0;
+    padding: 20px;
+    color: #333;
+    line-height: 1.6;
 }
 
-h1 {
-  text-align: center;
-  margin-bottom: 30px;
+header {
+    text-align: center;
+    margin-bottom: 40px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
 
-.grid-container {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  justify-content: center;
+header h1 {
+    color: #4a4a4a;
+    font-size: 2.8em;
+    margin-bottom: 10px;
 }
 
+header p {
+    font-size: 1.1em;
+    color: #666;
+}
+
+/* Contenedor principal de la malla */
+#malla-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: center;
+    max-width: 1300px;
+    margin: 0 auto;
+}
+
+/* Estilos para cada semestre */
 .semestre {
-  border: 2px solid #ccc;
-  border-radius: 10px;
-  padding: 10px;
-  width: 250px;
-  background: #ffffff;
-  box-shadow: 0 0 5px rgba(0,0,0,0.1);
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.07);
+    padding: 20px;
+    flex: 1; /* Permite que los semestres se distribuyan */
+    min-width: 280px; /* Ancho mínimo para cada columna de semestre */
+    max-width: 350px; /* Ancho máximo para cada columna de semestre */
+    display: flex;
+    flex-direction: column;
 }
 
 .semestre h2 {
-  text-align: center;
-  font-size: 18px;
-  margin-bottom: 10px;
+    color: #555;
+    margin-top: 0;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #eee;
+    font-size: 1.6em;
+    text-align: center;
 }
 
+/* Estilos para cada ramo */
 .ramo {
-  background: #d7b3f6;
-  padding: 8px;
-  border-radius: 6px;
-  margin: 5px 0;
-  text-align: center;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  position: relative;
+    background-color: #e0b0ff; /* Lila */
+    border: 1px solid #c980f0;
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    position: relative;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 70px; /* Para que todos los ramos tengan una altura similar */
 }
 
-.ramo:hover {
-  background: #c694f5;
+.ramo:last-child {
+    margin-bottom: 0;
 }
 
+.ramo:hover:not(.aprobado):not(.bloqueado) {
+    background-color: #d090ff; /* Lila un poco más oscuro al pasar el mouse */
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Estado: Aprobado */
 .ramo.aprobado {
-  background: #8a4dff;
-  color: white;
-  text-decoration: line-through;
+    background-color: #8a2be2; /* Morado */
+    color: white;
+    text-decoration: line-through;
+    cursor: default;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
 }
 
-.ramo.aprobado::after {
-  content: attr(data-nota);
-  position: absolute;
-  right: 8px;
-  top: 8px;
-  background: #fff;
-  color: #8a4dff;
-  font-size: 0.75rem;
-  padding: 2px 5px;
-  border-radius: 4px;
-  font-weight: bold;
+.ramo.aprobado .nota {
+    font-weight: bold;
+    margin-top: 8px;
+    display: block;
+    font-size: 0.9em;
+    color: rgba(255, 255, 255, 0.9);
 }
 
+/* Estado: Bloqueado por prerequisitos */
 .ramo.bloqueado {
-  background: #ccc;
-  color: #666;
-  cursor: not-allowed;
+    background-color: #dddddd; /* Gris */
+    color: #777777;
+    cursor: not-allowed;
+    opacity: 0.7;
+    filter: grayscale(10%);
+    position: relative; /* Asegura que el icono de candado se posicione correctamente */
+    pointer-events: none; /* Deshabilita clics en ramos bloqueados */
 }
 
 .ramo.bloqueado::before {
-  content: "🔒 ";
+    font-family: "Font Awesome 5 Free"; /* Usa la fuente de Font Awesome */
+    font-weight: 900; /* Para que aparezca el icono sólido */
+    content: "\f023"; /* Código del icono de candado cerrado */
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.4em;
+    color: #999;
 }
 
-.modal {
-  position: fixed;
-  top: 0; left: 0;
-  width: 100vw;
-  height: 100vh;
-  background: rgba(0,0,0,0.4);
-  display: flex;
-  align-items: center;
-  justify-content: center;
+/* Nombre del ramo dentro del cuadro */
+.ramo span:first-child {
+    font-weight: 600;
+    font-size: 1.05em;
+    margin-bottom: 5px;
 }
 
-.modal.hidden {
-  display: none;
-}
-
-.modal-content {
-  background: white;
-  padding: 20px;
-  border-radius: 10px;
-  width: 300px;
-  text-align: center;
-}
-
-#nota {
-  width: 80%;
-  padding: 5px;
-  margin-top: 10px;
-}
-
-button {
-  margin-top: 10px;
-  padding: 8px 16px;
-  background: #8a4dff;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-#close {
-  position: absolute;
-  top: 10px;
-  right: 15px;
-  font-size: 20px;
-  cursor: pointer;
+/* Footer */
+footer {
+    text-align: center;
+    margin-top: 50px;
+    padding: 20px;
+    color: #777;
+    font-size: 0.9em;
 }
