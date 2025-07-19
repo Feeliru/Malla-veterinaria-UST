@@ -217,7 +217,3 @@ function checkPrerequisites(ramoId) {
         return mallaStatus[prereqId]?.approved;
     });
 }
-
-    saveMallaStatus();
-    renderMalla(); // Volver a renderizar para actualizar el estado visual
-}
