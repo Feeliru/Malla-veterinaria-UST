@@ -122,7 +122,8 @@ header p {
 /* Estado: Aprobado - NUEVO COLOR: #983ae0 */
 .ramo.aprobado {
     background-color: #983ae0; /* ¡Aquí el nuevo color morado! */
-    color: white; /* Cambiado a blanco para mejor contraste con el morado oscuro */
+    border: 1px solid #7a2eb4; /* Borde un poco más oscuro que el fondo */
+    color: white; /* Color de texto blanco para mejor contraste */
     text-decoration: none;
     cursor: default;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
@@ -137,7 +138,7 @@ header p {
     font-weight: bold;
     margin-left: 10px;
     font-size: 1.5em;
-    color: white; /* Cambiado a blanco para mejor contraste con el nuevo morado */
+    color: white; /* Color de nota blanco para que se vea bien */
     flex-shrink: 0;
 }
 
