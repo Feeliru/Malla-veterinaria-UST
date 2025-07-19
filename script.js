@@ -41,7 +41,7 @@ const malla = [
     { id: 'VET-154_b', name: 'Nutrición Animal', semester: 5, prerequisites: ['BIO-003'] }, // Bioquímica General (ID ajustado para no duplicar con Estadística)
     { id: 'VET-124', name: 'Reproducción Animal', semester: 5, prerequisites: ['VET-150'] }, // Fisiología
     { id: 'VET-155', name: 'Conservación y Gestión Ambiental', semester: 5, prerequisites: ['VET-177'] }, // Ecología y Fauna Silvestre
-    { id: 'FGL-010', name: 'Inglés Básico II', semester: 5, prerequisites: [] }, // Pide nota
+    { id: 'FGL-010', name: 'Inglés Básico II', semester: 5, prerequisites: ['FGL-008'] }, // Inglés Básico
 
     // Semestre 6
     { id: 'VET-156', name: 'Patología de Sistemas', semester: 6, prerequisites: ['VET-153'] }, // Fisiopatología
